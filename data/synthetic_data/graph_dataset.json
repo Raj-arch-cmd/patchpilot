@@ -1,0 +1,349 @@
+{
+  "vulnerabilities": [
+    {
+      "id": "VULN-2024-001",
+      "title": "Remote Code Execution in xml-parser",
+      "description": "A heap buffer overflow in xml-parser \u22642.4.1 allows an attacker to execute arbitrary code via a crafted XML document.",
+      "severity": "CRITICAL",
+      "cvss_score": 9.8,
+      "cve": "CVE-2024-12345",
+      "published": "2024-03-15"
+    },
+    {
+      "id": "VULN-2024-002",
+      "title": "SQL Injection in query-builder",
+      "description": "Improper input sanitization in query-builder \u22641.2.0 allows SQL injection via user-supplied filter parameters.",
+      "severity": "HIGH",
+      "cvss_score": 8.1,
+      "cve": "CVE-2024-67890",
+      "published": "2024-04-02"
+    },
+    {
+      "id": "VULN-2024-003",
+      "title": "Denial of Service in log-rotator",
+      "description": "An uncontrolled resource consumption bug in log-rotator \u22640.9.5 allows an attacker to exhaust disk space.",
+      "severity": "MEDIUM",
+      "cvss_score": 5.3,
+      "cve": "CVE-2024-11111",
+      "published": "2024-05-10"
+    },
+    {
+      "id": "VULN-2024-004",
+      "title": "Path Traversal in file-utils",
+      "description": "Insufficient path validation in file-utils \u22643.1.2 allows directory traversal attacks.",
+      "severity": "HIGH",
+      "cvss_score": 7.5,
+      "cve": "CVE-2024-22222",
+      "published": "2024-06-01",
+      "incomplete_evidence": true
+    }
+  ],
+  "packages": [
+    {
+      "name": "xml-parser",
+      "version": "2.4.1",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "query-builder",
+      "version": "1.2.0",
+      "ecosystem": "pip"
+    },
+    {
+      "name": "log-rotator",
+      "version": "0.9.5",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "file-utils",
+      "version": "3.1.2",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "http-client",
+      "version": "5.0.0",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "data-processor",
+      "version": "2.1.0",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "auth-middleware",
+      "version": "1.3.0",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "report-engine",
+      "version": "4.0.0",
+      "ecosystem": "npm"
+    },
+    {
+      "name": "orm-core",
+      "version": "3.2.0",
+      "ecosystem": "pip"
+    },
+    {
+      "name": "cache-layer",
+      "version": "1.1.0",
+      "ecosystem": "npm"
+    }
+  ],
+  "dependency_edges": [
+    [
+      "http-client",
+      "5.0.0",
+      "xml-parser",
+      "2.4.1"
+    ],
+    [
+      "data-processor",
+      "2.1.0",
+      "http-client",
+      "5.0.0"
+    ],
+    [
+      "report-engine",
+      "4.0.0",
+      "data-processor",
+      "2.1.0"
+    ],
+    [
+      "auth-middleware",
+      "1.3.0",
+      "xml-parser",
+      "2.4.1"
+    ],
+    [
+      "orm-core",
+      "3.2.0",
+      "query-builder",
+      "1.2.0"
+    ],
+    [
+      "cache-layer",
+      "1.1.0",
+      "log-rotator",
+      "0.9.5"
+    ],
+    [
+      "report-engine",
+      "4.0.0",
+      "file-utils",
+      "3.1.2"
+    ]
+  ],
+  "vuln_package_map": {
+    "VULN-2024-001": [
+      "xml-parser",
+      "2.4.1"
+    ],
+    "VULN-2024-002": [
+      "query-builder",
+      "1.2.0"
+    ],
+    "VULN-2024-003": [
+      "log-rotator",
+      "0.9.5"
+    ],
+    "VULN-2024-004": [
+      "file-utils",
+      "3.1.2"
+    ]
+  },
+  "teams": [
+    {
+      "id": "team-platform",
+      "name": "Platform Engineering",
+      "email": "platform@example.com"
+    },
+    {
+      "id": "team-payments",
+      "name": "Payments Team",
+      "email": "payments@example.com"
+    },
+    {
+      "id": "team-analytics",
+      "name": "Analytics Team",
+      "email": "analytics@example.com"
+    },
+    {
+      "id": "team-infra",
+      "name": "Infrastructure Team",
+      "email": "infra@example.com"
+    }
+  ],
+  "applications": [
+    {
+      "id": "app-payment-gateway",
+      "name": "Payment Gateway",
+      "environment": "production",
+      "language": "JavaScript",
+      "team_id": "team-payments"
+    },
+    {
+      "id": "app-user-portal",
+      "name": "User Portal",
+      "environment": "production",
+      "language": "JavaScript",
+      "team_id": "team-platform"
+    },
+    {
+      "id": "app-analytics-service",
+      "name": "Analytics Service",
+      "environment": "production",
+      "language": "Python",
+      "team_id": "team-analytics"
+    },
+    {
+      "id": "app-internal-tools",
+      "name": "Internal Tools",
+      "environment": "staging",
+      "language": "JavaScript",
+      "team_id": "team-infra"
+    },
+    {
+      "id": "app-report-generator",
+      "name": "Report Generator",
+      "environment": "production",
+      "language": "JavaScript",
+      "team_id": null
+    }
+  ],
+  "app_package_edges": [
+    [
+      "app-payment-gateway",
+      "auth-middleware",
+      "1.3.0"
+    ],
+    [
+      "app-user-portal",
+      "http-client",
+      "5.0.0"
+    ],
+    [
+      "app-analytics-service",
+      "orm-core",
+      "3.2.0"
+    ],
+    [
+      "app-internal-tools",
+      "cache-layer",
+      "1.1.0"
+    ],
+    [
+      "app-report-generator",
+      "report-engine",
+      "4.0.0"
+    ],
+    [
+      "app-user-portal",
+      "data-processor",
+      "2.1.0"
+    ]
+  ],
+  "assets": [
+    {
+      "id": "asset-prod-k8s",
+      "name": "Production Kubernetes Cluster",
+      "criticality": "CRITICAL",
+      "environment": "production",
+      "region": "us-east-1",
+      "exposed": true
+    },
+    {
+      "id": "asset-payments-db",
+      "name": "Payments Database",
+      "criticality": "CRITICAL",
+      "environment": "production",
+      "region": "us-east-1",
+      "exposed": false
+    },
+    {
+      "id": "asset-analytics-cluster",
+      "name": "Analytics Processing Cluster",
+      "criticality": "HIGH",
+      "environment": "production",
+      "region": "us-west-2",
+      "exposed": false
+    },
+    {
+      "id": "asset-staging-env",
+      "name": "Staging Environment",
+      "criticality": "LOW",
+      "environment": "staging",
+      "region": "us-east-1",
+      "exposed": false
+    },
+    {
+      "id": "asset-batch-server",
+      "name": "Batch Report Server",
+      "criticality": "MEDIUM",
+      "environment": "production",
+      "region": "eu-west-1",
+      "exposed": false
+    }
+  ],
+  "app_asset_edges": [
+    [
+      "app-payment-gateway",
+      "asset-prod-k8s"
+    ],
+    [
+      "app-payment-gateway",
+      "asset-payments-db"
+    ],
+    [
+      "app-user-portal",
+      "asset-prod-k8s"
+    ],
+    [
+      "app-analytics-service",
+      "asset-analytics-cluster"
+    ],
+    [
+      "app-internal-tools",
+      "asset-staging-env"
+    ],
+    [
+      "app-report-generator",
+      "asset-batch-server"
+    ]
+  ],
+  "findings": [
+    {
+      "id": "finding-001",
+      "vuln_id": "VULN-2024-001",
+      "status": "open",
+      "source": "SAST",
+      "detected_at": "2024-03-16",
+      "severity_override": null
+    },
+    {
+      "id": "finding-002",
+      "vuln_id": "VULN-2024-002",
+      "status": "open",
+      "source": "Dependency Scanner",
+      "detected_at": "2024-04-03",
+      "severity_override": null
+    },
+    {
+      "id": "finding-003",
+      "vuln_id": "VULN-2024-003",
+      "status": "open",
+      "source": "DAST",
+      "detected_at": "2024-05-11",
+      "severity_override": null
+    },
+    {
+      "id": "finding-004",
+      "vuln_id": "VULN-2024-004",
+      "status": "open",
+      "source": "Manual Review",
+      "detected_at": "2024-06-05",
+      "severity_override": null,
+      "incomplete_evidence": true
+    }
+  ]
+}
